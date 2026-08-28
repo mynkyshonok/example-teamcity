@@ -10,6 +10,11 @@ To apply the patch, change the buildType with id = 'ExampleTeamcity'
 accordingly, and delete the patch script.
 */
 changeBuildType(RelativeId("ExampleTeamcity")) {
+    check(artifactRules == "") {
+        "Unexpected option value: artifactRules = $artifactRules"
+    }
+    artifactRules = "target/*.jar"
+
     triggers {
         add {
             vcs {
